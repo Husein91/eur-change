@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Euro Change Calculator</title>
+  <title>Ресто в евро</title>
 
   <style>
     body {
@@ -36,6 +36,7 @@
       width: 100%;
       padding: 8px;
       margin-top: 5px;
+      box-sizing: border-box;
       font-size: 16px;
     }
     .result {
@@ -62,20 +63,20 @@
 <body>
 
 <div class="app">
-  <h1>EUR price – BGN paid</h1>
+  <h1>Цена в евро – платено в лева</h1>
 
-  <label>Product price (EUR)</label>
-  <input type="number" id="priceEur" step="0.01" placeholder="1.40">
+  <label>Цена на продукта (EUR)</label>
+  <input type="number" id="priceEur" step="0.01" placeholder="Цена в EUR">
 
-  <label>Customer pays (BGN)</label>
-  <input type="number" id="paidBgn" step="0.01" placeholder="6.00">
+  <label>Платена сума (BGN)</label>
+  <input type="number" id="paidBgn" step="0.01" placeholder="Вашите пари в Лева">
 
   <div class="result" id="result">
-    Enter values to calculate
+    Въведете суми за изчисление
   </div>
 
   <div class="note">
-    Fixed rate: 1 EUR = 1.95583 BGN
+    Фиксиран курс: 1 EUR = 1.95583 BGN
   </div>
 </div>
 
@@ -95,7 +96,7 @@
     const paidBgn = parseFloat(paidInput.value);
 
     if (isNaN(priceEur) || isNaN(paidBgn)) {
-      resultDiv.textContent = "Enter values to calculate";
+      resultDiv.textContent = "Въведете суми за изчисление";
       return;
     }
 
@@ -104,13 +105,13 @@
 
     if (changeEur < 0) {
       resultDiv.innerHTML = `
-        Customer still owes <strong>${Math.abs(changeEur).toFixed(2)} EUR</strong>
+        Клиентът дължи още <strong>${Math.abs(changeEur).toFixed(2)} EUR</strong>
       `;
     } else {
       resultDiv.innerHTML = `
-        Paid: ${paidEur.toFixed(2)} EUR<br>
+        Вашите дадени пари: ${paidEur.toFixed(2)} EUR<br>
         <div class="highlight">
-          Change to return: ${changeEur.toFixed(2)} EUR
+          Ресто за връщане: ${changeEur.toFixed(2)} EUR
         </div>
       `;
     }
